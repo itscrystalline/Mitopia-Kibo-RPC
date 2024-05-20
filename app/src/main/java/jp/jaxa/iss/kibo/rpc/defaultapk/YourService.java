@@ -2,10 +2,7 @@ package jp.jaxa.iss.kibo.rpc.defaultapk;
 
 import jp.jaxa.iss.kibo.rpc.api.KiboRpcService;
 
-import gov.nasa.arc.astrobee.types.Point;
-import gov.nasa.arc.astrobee.types.Quaternion;
-
-import org.opencv.core.Mat;
+import jp.jaxa.iss.kibo.rpc.defaultapk.core.Astro;
 
 /**
  * Class meant to handle commands from the Ground Data System and execute them in Astrobee.
@@ -14,7 +11,7 @@ import org.opencv.core.Mat;
 public class YourService extends KiboRpcService {
     @Override
     protected void runPlan1(){
-
+        Astro.bee(api);
     }
 
     @Override
