@@ -30,9 +30,9 @@ public class EulerAngles {
     /**
      * Create a EulerAngles object from a quaternion
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles#Quaternion_to_Euler_angles_(in_3-2-1_sequence)_conversion">Wikipedia</a>
      * @param orientation the quaternion
      * @return the EulerAngles object
+     * @see <a href="https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles#Quaternion_to_Euler_angles_(in_3-2-1_sequence)_conversion">Wikipedia</a>
      */
     public static EulerAngles of(Quaternion orientation) {
         //TODO: might be inaccurate, reimplement if necessary
@@ -45,7 +45,6 @@ public class EulerAngles {
         double cosp = Math.sqrt(1 - 2 * (orientation.getW() * orientation.getY() - orientation.getX() * orientation.getZ()));
         double pitch = 2 * Math.atan2(sinp, cosp) - Math.PI / 2;
 
-        // yaw (z-axis rotation)
         double siny_cosp = 2 * (orientation.getW() * orientation.getZ() + orientation.getX() * orientation.getY());
         double cosy_cosp = 1 - 2 * (orientation.getY() * orientation.getY() + orientation.getZ() * orientation.getZ());
         double yaw = Math.atan2(siny_cosp, cosy_cosp);
@@ -56,44 +55,29 @@ public class EulerAngles {
     /**
      * Create a quaternion from Euler angles
      *
-     * @see <a href="https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles#Euler_angles_(in_3-2-1_sequence)_to_quaternion_conversion">Wikipedia</a>
      * @param roll  (X) the roll angle in radians
      * @param pitch (Y) the pitch angle in radians
      * @param yaw   (Z) the yaw angle in radians
      * @return the quaternion
+     * @see <a href="https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles#Euler_angles_(in_3-2-1_sequence)_to_quaternion_conversion">Wikipedia</a>
+     * @see <a href="https://github.com/mrdoob/three.js/blob/master/src/math/Quaternion.js">Reference implmentation</a>
      */
     public static Quaternion fromRad(double roll, double pitch, double yaw) {
-        //TODO: might be inaccurate, reimplement if necessary
-        //Refer from https://github.com/mrdoob/three.js/blob/master/src/math/Quaternion.js
+        double c1 = Math.cos(roll / 2);
+        double c2 = Math.cos(pitch / 2);
+        double c3 = Math.cos(yaw / 2);
 
-        double c1 = Math.cos( roll / 2 );
-        double c2 = Math.cos( pitch / 2 );
-        double c3 = Math.cos( yaw / 2 );
+        double s1 = Math.sin(roll / 2);
+        double s2 = Math.sin(pitch / 2);
+        double s3 = Math.sin(yaw / 2);
 
-        double s1 = Math.sin( roll / 2 );
-        double s2 = Math.sin( pitch / 2 );
-        double s3 = Math.sin( yaw / 2 );
 
         return new Quaternion(
-            s1 * c2 * c3 + c1 * s2 * s3,
-            c1 * s2 * c3 - s1 * c2 * s3,
-            c1 * c2 * s3 + s1 * s2 * c3,
-            c1 * c2 * c3 - s1 * s2 * s3
+          (float) (s1 * c2 * c3 + c1 * s2 * s3),
+          (float) (c1 * s2 * c3 - s1 * c2 * s3),
+          (float) (c1 * c2 * s3 + s1 * s2 * c3),
+          (float) (c1 * c2 * c3 - s1 * s2 * s3)
         );
-
-        /*double cr = Math.cos(roll * 0.5);
-        double sr = Math.sin(roll * 0.5);
-        double cp = Math.cos(pitch * 0.5);
-        double sp = Math.sin(pitch * 0.5);
-        double cy = Math.cos(yaw * 0.5);
-        double sy = Math.sin(yaw * 0.5);
-
-        return new Quaternion(
-          (float) (sr * cp * cy - cr * sp * sy),
-          (float) (cr * sp * cy + sr * cp * sy),
-          (float) (cr * cp * sy - sr * sp * cy),
-          (float) (cr * cp * cy + sr * sp * sy)
-        );*/
     }
 
     /**
