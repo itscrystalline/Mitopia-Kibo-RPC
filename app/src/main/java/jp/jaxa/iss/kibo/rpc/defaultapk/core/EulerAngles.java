@@ -64,8 +64,24 @@ public class EulerAngles {
      */
     public static Quaternion fromRad(double roll, double pitch, double yaw) {
         //TODO: might be inaccurate, reimplement if necessary
+        //Refer from https://github.com/mrdoob/three.js/blob/master/src/math/Quaternion.js
 
-        double cr = Math.cos(roll * 0.5);
+        double c1 = Math.cos( roll / 2 );
+        double c2 = Math.cos( pitch / 2 );
+        double c3 = Math.cos( yaw / 2 );
+
+        double s1 = Math.sin( roll / 2 );
+        double s2 = Math.sin( pitch / 2 );
+        double s3 = Math.sin( yaw / 2 );
+
+        return new Quaternion(
+            s1 * c2 * c3 + c1 * s2 * s3,
+            c1 * s2 * c3 - s1 * c2 * s3,
+            c1 * c2 * s3 + s1 * s2 * c3,
+            c1 * c2 * c3 - s1 * s2 * s3
+        );
+
+        /*double cr = Math.cos(roll * 0.5);
         double sr = Math.sin(roll * 0.5);
         double cp = Math.cos(pitch * 0.5);
         double sp = Math.sin(pitch * 0.5);
@@ -77,7 +93,7 @@ public class EulerAngles {
           (float) (cr * sp * cy + sr * cp * sy),
           (float) (cr * cp * sy - sr * sp * cy),
           (float) (cr * cp * cy + sr * sp * sy)
-        );
+        );*/
     }
 
     /**
