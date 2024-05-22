@@ -5,35 +5,37 @@ import gov.nasa.arc.astrobee.types.Quaternion;
 public class Utils {
     /**
      * Create a quaternion from Euler angles
-     * @param roll (X) the roll angle in radians
+     *
+     * @param roll  (X) the roll angle in radians
      * @param pitch (Y) the pitch angle in radians
-     * @param yaw (Z) the yaw angle in radians
+     * @param yaw   (Z) the yaw angle in radians
      * @return the quaternion
      */
-    public static Quaternion eulerAnglesRad(float roll, float pitch, float yaw) {
-        float cr = (float) Math.cos(roll * 0.5);
-        float sr = (float) Math.sin(roll * 0.5);
-        float cp = (float) Math.cos(pitch * 0.5);
-        float sp = (float) Math.sin(pitch * 0.5);
-        float cy = (float) Math.cos(yaw * 0.5);
-        float sy = (float) Math.sin(yaw * 0.5);
+    public static Quaternion eulerAnglesRad(double roll, double pitch, double yaw) {
+        double cr = Math.cos(roll * 0.5);
+        double sr = Math.sin(roll * 0.5);
+        double cp = Math.cos(pitch * 0.5);
+        double sp = Math.sin(pitch * 0.5);
+        double cy = Math.cos(yaw * 0.5);
+        double sy = Math.sin(yaw * 0.5);
 
         return new Quaternion(
-          sr * cp * cy - cr * sp * sy,
-          cr * sp * cy + sr * cp * sy,
-          cr * cp * sy - sr * sp * cy,
-          cr * cp * cy + sr * sp * sy
+          (float) (sr * cp * cy - cr * sp * sy),
+          (float) (cr * sp * cy + sr * cp * sy),
+          (float) (cr * cp * sy - sr * sp * cy),
+          (float) (cr * cp * cy + sr * sp * sy)
         );
     }
 
     /**
      * Create a quaternion from Euler angles
-     * @param roll (X) the roll angle in degrees
+     *
+     * @param roll  (X) the roll angle in degrees
      * @param pitch (Y) the pitch angle in degrees
-     * @param yaw (Z) the yaw angle in degrees
+     * @param yaw   (Z) the yaw angle in degrees
      * @return the quaternion
      */
-    public static Quaternion eulerAnglesDeg(float roll, float pitch, float yaw) {
-        return eulerAnglesRad((float) Math.toRadians(roll), (float) Math.toRadians(pitch), (float) Math.toRadians(yaw));
+    public static Quaternion eulerAnglesDeg(double roll, double pitch, double yaw) {
+        return eulerAnglesRad(Math.toRadians(roll), Math.toRadians(pitch), Math.toRadians(yaw));
     }
 }
