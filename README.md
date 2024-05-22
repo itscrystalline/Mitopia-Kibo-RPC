@@ -1,4 +1,7 @@
 Mitopia!! Astrobee Project
 ---
 ### Members
-- Thad Choyrum
+- iwant2tryhard
+- TBA
+- TBA
+- TBA
