@@ -35,11 +35,11 @@ public class Graph {
             }
             for(int i = 0;i<AL.size();i++) {
                 if(PassesKOZs(node,AL.get(i))){
-                    node.AddEdgeList(AL.get(i).Point,999999999d);
-                    AL.get(i).AddEdgeList(p,999999999d);
+                    node.AddEdgeList(AL.get(i),999999999d);
+                    AL.get(i).AddEdgeList(node,999999999d);
                 }else{
-                    node.AddEdgeList(AL.get(i).Point);
-                    AL.get(i).AddEdgeList(p);
+                    node.AddEdgeList(AL.get(i));
+                    AL.get(i).AddEdgeList(node);
                 }
             }
         }
@@ -57,11 +57,11 @@ public class Graph {
         AL.add(node);
         for(int i = 0;i<AL.size();i++) {
             if(PassesKOZs(node, AL.get(i))){
-                node.AddEdgeList(AL.get(i).Point,999999999d);
-                AL.get(i).AddEdgeList(p,999999999d);
+                node.AddEdgeList(AL.get(i),999999999d);
+                AL.get(i).AddEdgeList(node,999999999d);
             }else {
-                node.AddEdgeList(AL.get(i).Point);
-                AL.get(i).AddEdgeList(p);
+                node.AddEdgeList(AL.get(i));
+                AL.get(i).AddEdgeList(node);
             }
         }
     }

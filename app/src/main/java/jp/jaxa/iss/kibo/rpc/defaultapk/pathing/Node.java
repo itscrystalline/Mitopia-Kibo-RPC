@@ -37,11 +37,11 @@ public class Node {
         }
     }
 
-    public void AddEdgeList(Point dest,double Dist){
+    public void AddEdgeList(Node dest,double Dist){
         Edges.add(new EdgesInfo(dest,Dist));
     }
-    public void AddEdgeList(Point dest){
-        double distance = Math.sqrt(Math.pow(Point.getX() - dest.getX(), 2) + Math.pow(Point.getY() - dest.getY(), 2) + Math.pow(Point.getZ() - dest.getZ(), 2));
+    public void AddEdgeList(Node dest){
+        double distance = Math.sqrt(Math.pow(Point.getX() - dest.Point.getX(), 2) + Math.pow(Point.getY() - dest.Point.getY(), 2) + Math.pow(Point.getZ() - dest.Point.getZ(), 2));
         Edges.add(new EdgesInfo(dest,distance));
     }
 }
