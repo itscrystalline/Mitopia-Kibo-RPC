@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class Node {
     public Point Point;
-    public ArrayList<EdgesInfo>  Edges;
+    public ArrayList<EdgesInfo> Edges = new ArrayList<EdgesInfo>();
 
     public Node(double x, double y, double z){
         Point p = new Point(x,y,z);
