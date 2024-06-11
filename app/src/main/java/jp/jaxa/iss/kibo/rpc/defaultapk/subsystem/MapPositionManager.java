@@ -45,8 +45,8 @@ public class MapPositionManager {
 
     public MapPositionManager(Astro bee) {
         this.bee = bee;
-        this.position = Point.of(bee.getPosition());
-        this.orientation = EulerAngles.of(bee.getOrientation());
+        this.position = bee.getPosition();
+        this.orientation = bee.getOrientation();
     }
 
     public void addKeepInZone(BoundingBox zone) {
