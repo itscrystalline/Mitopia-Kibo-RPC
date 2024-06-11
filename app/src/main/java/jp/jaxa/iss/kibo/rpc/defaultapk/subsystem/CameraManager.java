@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class CameraManager {
-    private Astro bee;
+    private final Astro bee;
     public CameraManager(Astro bee) {
         this.bee = bee;
     }

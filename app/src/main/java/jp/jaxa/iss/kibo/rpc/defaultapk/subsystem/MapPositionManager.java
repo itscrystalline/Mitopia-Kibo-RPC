@@ -35,7 +35,7 @@ public class MapPositionManager {
     };
 
 
-    private Astro bee;
+    private final Astro bee;
 
     private List<BoundingBox> keepInZones;
     private List<KOZBoundingBox> keepOutZones;
