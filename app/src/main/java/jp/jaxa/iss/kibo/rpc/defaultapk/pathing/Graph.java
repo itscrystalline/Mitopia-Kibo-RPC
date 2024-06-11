@@ -1,6 +1,7 @@
 package jp.jaxa.iss.kibo.rpc.defaultapk.pathing;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -12,7 +13,7 @@ import jp.jaxa.iss.kibo.rpc.defaultapk.subsystem.MapPositionManager;
 * */
 public class Graph {
     private static ArrayList<Node> AL;
-    private static double KOZ_SCALE = 1.5;
+    private static final double KOZ_SCALE = 1.5;
 
     /**
      * Add KOZs to the graph
@@ -20,9 +21,7 @@ public class Graph {
     public static void Init(){
         ArrayList<Point> InterestPoints = new ArrayList<Point>();
         for(BoundingBox KOZ: MapPositionManager.KOZs){
-            for(Point P: KOZ.scale(KOZ_SCALE).points()) {
-                InterestPoints.add(P);
-            }
+            InterestPoints.addAll(Arrays.asList(KOZ.scale(KOZ_SCALE).points()));
         }
         addNode(InterestPoints);
     }
@@ -33,13 +32,13 @@ public class Graph {
             if(AL.isEmpty()){
                 AL.add(node);
             }
-            for(int i = 0;i<AL.size();i++) {
-                if(PassesKOZs(node,AL.get(i))){
-                    node.AddEdgeList(AL.get(i),999999999d);
-                    AL.get(i).AddEdgeList(node,999999999d);
-                }else{
-                    node.AddEdgeList(AL.get(i));
-                    AL.get(i).AddEdgeList(node);
+            for (Node value : AL) {
+                if (PassesKOZs(node, value)) {
+                    node.AddEdgeList(value, 999999999d);
+                    value.AddEdgeList(node, 999999999d);
+                } else {
+                    node.AddEdgeList(value);
+                    value.AddEdgeList(node);
                 }
             }
         }
@@ -55,13 +54,13 @@ public class Graph {
     public static void addNode(Point p) {
         Node node = new Node(p);
         AL.add(node);
-        for(int i = 0;i<AL.size();i++) {
-            if(PassesKOZs(node, AL.get(i))){
-                node.AddEdgeList(AL.get(i),999999999d);
-                AL.get(i).AddEdgeList(node,999999999d);
-            }else {
-                node.AddEdgeList(AL.get(i));
-                AL.get(i).AddEdgeList(node);
+        for (Node value : AL) {
+            if (PassesKOZs(node, value)) {
+                node.AddEdgeList(value, 999999999d);
+                value.AddEdgeList(node, 999999999d);
+            } else {
+                node.AddEdgeList(value);
+                value.AddEdgeList(node);
             }
         }
     }
