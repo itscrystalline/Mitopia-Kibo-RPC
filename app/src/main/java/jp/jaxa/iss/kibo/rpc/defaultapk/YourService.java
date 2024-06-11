@@ -19,6 +19,8 @@ public class YourService extends KiboRpcService {
 
         Astro.bee.mapPositionManager.addWaypoint(MapPositionManager.START);
         Astro.bee.mapPositionManager.addWaypoint(MapPositionManager.ASTRONAUT);
+
+        Astro.bee.end();
     }
 
     @Override
