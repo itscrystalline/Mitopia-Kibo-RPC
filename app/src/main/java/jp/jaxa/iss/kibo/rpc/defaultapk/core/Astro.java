@@ -1,6 +1,7 @@
 package jp.jaxa.iss.kibo.rpc.defaultapk.core;
 
 import gov.nasa.arc.astrobee.Kinematics;
+import gov.nasa.arc.astrobee.Result;
 import gov.nasa.arc.astrobee.types.Quaternion;
 import jp.jaxa.iss.kibo.rpc.api.KiboRpcApi;
 import jp.jaxa.iss.kibo.rpc.defaultapk.pathing.Point;
@@ -30,6 +31,7 @@ public class Astro {
 
     public void end(){
         api.reportRoundingCompletion();
+        api.notifyRecognitionItem();
     }
 
     public Kinematics getKinematics(){
@@ -47,8 +49,18 @@ public class Astro {
         return EulerAngles.of(getOrientationQuaternion());
     }
 
-    public static void bee(KiboRpcApi api){
-        new Astro(api);
+    public static void bee(KiboRpcApi api){ new Astro(api); }
+
+    public void moveTo(Point P, Quaternion Q){
+        api.moveTo(P, Q, false); // temporary
+        /*int loopCounter = 0;
+        while (!result.hasSucceeded() && loopCounter < 4) {
+            result = api.moveTo(P, Q, true);
+            ++loopCounter;
+        }
+        if (!result.hasSucceeded()) {
+            throw new IllegalStateException("fail to move to the target point.");
+        }*/
     }
 
     public Mat getPhoto(){

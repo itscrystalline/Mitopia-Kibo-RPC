@@ -1,8 +1,13 @@
 package jp.jaxa.iss.kibo.rpc.defaultapk.subsystem;
 
+import android.support.annotation.NonNull;
+
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.ArrayList;
 
 import gov.nasa.arc.astrobee.types.Quaternion;
 import jp.jaxa.iss.kibo.rpc.defaultapk.core.Astro;
@@ -12,9 +17,9 @@ import jp.jaxa.iss.kibo.rpc.defaultapk.pathing.KOZBoundingBox;
 import jp.jaxa.iss.kibo.rpc.defaultapk.pathing.Point;
 
 public class MapPositionManager {
-    public static Point START = new Point(9.815, -9.806, 4.293, 1, 0, 0, 0);
+    public static Point START = new Point(9.815, -9.806, 4.293, 1, 0, 0, 0); //THIS IS NOT THE AFTER DOCKING POSITION CAREFUL
     public static Point ASTRONAUT = new Point(11.143, -6.7607, 4.9654, 0, 0, 0.707, 0.707);
-
+    //10.796999999999999, y=-9.505, z=5.039999999999999
     public static KOZBoundingBox[] KOZs = new KOZBoundingBox[]{
       new KOZBoundingBox(10.87, -9.5, 4.27, 11.6, -9.45, 4.97),
       new KOZBoundingBox(10.25, -9.5, 4.97, 10.87, -9.45, 5.62),
@@ -37,9 +42,9 @@ public class MapPositionManager {
 
     private final Astro bee;
 
-    private List<BoundingBox> keepInZones;
-    private List<KOZBoundingBox> keepOutZones;
-    private List<Point> waypoints;
+    private List<BoundingBox> keepInZones = new ArrayList<>();
+    private List<KOZBoundingBox> keepOutZones= new ArrayList<>();
+    private List<Point> waypoints = new ArrayList<>();
     private Point position;
     private EulerAngles orientation;
 

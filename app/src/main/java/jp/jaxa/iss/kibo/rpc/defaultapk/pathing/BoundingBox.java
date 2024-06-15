@@ -1,5 +1,6 @@
 package jp.jaxa.iss.kibo.rpc.defaultapk.pathing;
 
+
 public class BoundingBox {
     public Point start, end;
 
@@ -27,14 +28,14 @@ public class BoundingBox {
      */
     public Point[] points() {
         return new Point[]{
-            new Point(start.getX(), start.getY(), start.getZ()),
-            new Point(start.getX(), start.getY(), end.getZ()),
-            new Point(start.getX(), end.getY(), start.getZ()),
-            new Point(start.getX(), end.getY(), end.getZ()),
-            new Point(end.getX(), start.getY(), start.getZ()),
-            new Point(end.getX(), start.getY(), end.getZ()),
-            new Point(end.getX(), end.getY(), start.getZ()),
-            new Point(end.getX(), end.getY(), end.getZ())
+            new Point(start.getX(), start.getY(), start.getZ()),   //up left back
+            new Point(start.getX(), start.getY(), end.getZ()),  //down left back
+            new Point(start.getX(), end.getY(), start.getZ()), //up left front
+            new Point(start.getX(), end.getY(), end.getZ()), //down left front
+            new Point(end.getX(), start.getY(), start.getZ()), //up right back
+            new Point(end.getX(), start.getY(), end.getZ()), //down right back
+            new Point(end.getX(), end.getY(), start.getZ()), //up right front
+            new Point(end.getX(), end.getY(), end.getZ())   //down right front
         };
     }
 
