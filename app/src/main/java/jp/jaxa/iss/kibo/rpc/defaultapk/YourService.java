@@ -39,6 +39,7 @@ public class YourService extends KiboRpcService {
         Path ToAstron = Path.dijkstra(toMid,astron);
         ToAstron.moveByPath();
         //move to astronaut (pathfind system is still not working)
+        Astro.bee.cameraManager.takePhotoBitmap();
 
         Astro.bee.end();
     }

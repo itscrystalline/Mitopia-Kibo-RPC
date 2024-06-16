@@ -1,5 +1,6 @@
 package jp.jaxa.iss.kibo.rpc.defaultapk.core;
 
+import android.graphics.Bitmap;
 import gov.nasa.arc.astrobee.Kinematics;
 import gov.nasa.arc.astrobee.Result;
 import gov.nasa.arc.astrobee.types.Quaternion;
@@ -65,5 +66,9 @@ public class Astro {
 
     public Mat getPhoto(){
         return api.getMatNavCam();
+    }
+
+    public Bitmap getPhotoBitmap(){
+        return api.getBitmapNavCam();
     }
 }

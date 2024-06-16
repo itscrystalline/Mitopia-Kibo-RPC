@@ -1,5 +1,6 @@
 package jp.jaxa.iss.kibo.rpc.defaultapk.subsystem;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 import jp.jaxa.iss.kibo.rpc.defaultapk.core.Astro;
 import jp.jaxa.iss.kibo.rpc.defaultapk.core.EulerAngles;
@@ -19,6 +20,13 @@ public class CameraManager {
         Date currentTime = Calendar.getInstance().getTime();
         Mat image = bee.getPhoto();
         bee.getApi().saveMatImage(image, currentTime.toString());
+        Log.i("CameraManager", "Photo taken at " + currentTime);
+    }
+
+    public void takePhotoBitmap() {
+        Date currentTime = Calendar.getInstance().getTime();
+        Bitmap image = bee.getPhotoBitmap();
+        bee.getApi().saveBitmapImage(image, currentTime.toString());
         Log.i("CameraManager", "Photo taken at " + currentTime);
     }
 }
