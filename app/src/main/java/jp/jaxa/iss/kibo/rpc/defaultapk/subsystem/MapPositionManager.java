@@ -38,12 +38,19 @@ public class MapPositionManager {
       new BoundingBox(10.3, -8.4, 3.76093, 11.55, -7.45, 3.76093),
       new BoundingBox(9.866984, -7.34, 4.32, 9.866984, -6.365, 5.57),
     };
+    public static Point[] POINTS = new Point[]{
+      new Point(11.199, 10.142, -5.3786, EulerAngles.fromRad(0, -0.0602041, 1.35162)),
+      new Point(11.199, 6.7315, -4.7689, EulerAngles.fromRad(0, 0.174796, -1.58838)),
+      new Point(11.087, 6.7291, -4.7982, EulerAngles.fromRad(0, 3.12163, -1.56971)),
+      new Point(10.837, 7.6984, -4.3423, EulerAngles.fromRad(0, -1.6402, 0.386623)),
+      new Point(11.2027, 8.67868, -4.2931, EulerAngles.fromRad(0, -1.4152, 2.78481))
+    };
 
 
     private final Astro bee;
 
     private List<BoundingBox> keepInZones = new ArrayList<>();
-    private List<KOZBoundingBox> keepOutZones= new ArrayList<>();
+    private List<KOZBoundingBox> keepOutZones = new ArrayList<>();
     private List<Point> waypoints = new ArrayList<>();
     private Point position;
     private EulerAngles orientation;

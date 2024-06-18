@@ -21,7 +21,7 @@ public class Path {
         for(Point p: PointSet){
             String msg = "targ: " + p.getX() + " " + p.getY() + " " + p.getZ();
             Log.i("Path",msg);
-            Astro.bee.moveTo(p,tempoQuat);
+            Astro.bee.moveTo(p,tempoQuat, false);
         }
     }
 
