@@ -1,5 +1,6 @@
 package jp.jaxa.iss.kibo.rpc.defaultapk.core;
 
+import android.graphics.Bitmap;
 import gov.nasa.arc.astrobee.Kinematics;
 import gov.nasa.arc.astrobee.Result;
 import gov.nasa.arc.astrobee.types.Quaternion;
@@ -51,7 +52,7 @@ public class Astro {
 
     public static void bee(KiboRpcApi api){ new Astro(api); }
 
-    public void moveTo(Point P, Quaternion Q,boolean debug){
+    public void moveTo(Point P, Quaternion Q, boolean debug){
         api.moveTo(P, Q, debug); // temporary
         /*int loopCounter = 0;
         while (!result.hasSucceeded() && loopCounter < 4) {
@@ -73,5 +74,9 @@ public class Astro {
 
     public Mat getPhoto(){
         return api.getMatNavCam();
+    }
+
+    public Bitmap getPhotoBitmap(){
+        return api.getBitmapNavCam();
     }
 }
