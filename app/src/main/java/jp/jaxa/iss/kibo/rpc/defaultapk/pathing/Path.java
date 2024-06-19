@@ -20,12 +20,11 @@ public class Path {
     ArrayList<Point> PointSet = new ArrayList<>(); // Could use linked list maybe? Please implement if it actually is better.
     public static ArrayList<Double> debug = new ArrayList<>();
 
-    public void moveByPath(){
-        Quaternion tempoQuat = new Quaternion(0f,0f,-0.707f,0.707f);
+    public void moveByPath(Quaternion Q){
         for(Point p: PointSet){
             String msg = "targ: " + p.getX() + " " + p.getY() + " " + p.getZ();
             Log.i("Path",msg);
-            Astro.bee.moveTo(p,tempoQuat,false);
+            Astro.bee.moveTo(p,Q, false);
         }
     }
 

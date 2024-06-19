@@ -1,5 +1,6 @@
 package jp.jaxa.iss.kibo.rpc.defaultapk.core;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import gov.nasa.arc.astrobee.Kinematics;
 import gov.nasa.arc.astrobee.Result;
@@ -70,6 +71,10 @@ public class Astro {
 
     public void rotateTo(EulerAngles E, boolean debug){
         api.moveTo(this.getPosition(), E.quaternion(), debug);
+    }
+
+    public void SetFlashlight(float intensity){
+        api.flashlightControlFront(intensity);
     }
 
     public Mat getPhoto(){
