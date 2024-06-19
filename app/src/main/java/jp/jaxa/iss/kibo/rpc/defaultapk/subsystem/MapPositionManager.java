@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import gov.nasa.arc.astrobee.types.Quaternion;
 import jp.jaxa.iss.kibo.rpc.defaultapk.core.Astro;
 import jp.jaxa.iss.kibo.rpc.defaultapk.core.EulerAngles;
+import jp.jaxa.iss.kibo.rpc.defaultapk.pathing.Area;
 import jp.jaxa.iss.kibo.rpc.defaultapk.pathing.BoundingBox;
 import jp.jaxa.iss.kibo.rpc.defaultapk.pathing.KOZBoundingBox;
 import jp.jaxa.iss.kibo.rpc.defaultapk.pathing.Point;
@@ -32,11 +33,11 @@ public class MapPositionManager {
       new BoundingBox(10.3, -10.2, 4.32, 11.55, -6.0, 5.57),
       new BoundingBox(9.5, -10.5, 4.02, 10.5, -9.6, 4.8)
     };
-    public static BoundingBox[] AREAS = new BoundingBox[]{
-      new BoundingBox(10.42, -10.58, 4.82, 11.48, -10.58, 5.57),
-      new BoundingBox(10.3, -9.25, 3.76203, 11.55, -8.5, 3.76203),
-      new BoundingBox(10.3, -8.4, 3.76093, 11.55, -7.45, 3.76093),
-      new BoundingBox(9.866984, -7.34, 4.32, 9.866984, -6.365, 5.57),
+    public static Area[] AREAS = new Area[]{
+      new Area(10.42, -10.58, 4.82, 11.48, -10.58, 5.57),  //be careful when debugging the coordinate is not the same.
+      new Area(10.3, -9.25, 3.76203, 11.55, -8.5, 3.76203),
+      new Area(10.3, -8.4, 3.76093, 11.55, -7.45, 3.76093),
+      new Area(9.866984, -7.34, 4.32, 9.866984, -6.365, 5.57),
     };
 
 

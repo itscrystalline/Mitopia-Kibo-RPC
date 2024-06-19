@@ -26,4 +26,11 @@ public class KOZBoundingBox extends BoundingBox {
                 new Point(end.getX(), end.getY(),(end.getZ()-start.getZ())/2+start.getZ()),
         };
     }
+
+    public KOZBoundingBox scale(double x, double y, double z){
+        double[] size = size();
+        double[] newSize = new double[]{size[0] * x, size[1] * y, size[2] * z};
+        double[] center = new double[]{start.getX() + size[0] / 2, start.getY() + size[1] / 2, start.getZ() + size[2] / 2};
+        return new KOZBoundingBox(center[0] - newSize[0] / 2, center[1] - newSize[1] / 2, center[2] - newSize[2] / 2, center[0] + newSize[0] / 2, center[1] + newSize[1] / 2, center[2] + newSize[2] / 2);
+    }
 }

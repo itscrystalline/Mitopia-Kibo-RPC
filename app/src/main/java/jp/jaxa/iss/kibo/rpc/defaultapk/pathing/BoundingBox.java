@@ -53,6 +53,12 @@ public class BoundingBox {
         return new BoundingBox(center[0] - newSize[0] / 2, center[1] - newSize[1] / 2, center[2] - newSize[2] / 2, center[0] + newSize[0] / 2, center[1] + newSize[1] / 2, center[2] + newSize[2] / 2);
     }
 
+    public double[] getCenter(){
+        double[] size = size();
+        double[] center = new double[]{start.getX() + size[0] / 2, start.getY() + size[1] / 2, start.getZ() + size[2] / 2};
+        return new double[]{center[0],center[1],center[2]};
+    }
+
     /**
      * Scale the bounding box by the given factors, with the center of the bounding box as the origin.
      * @param scale The factor to scale the box by.

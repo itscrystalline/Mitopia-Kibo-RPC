@@ -2,6 +2,7 @@ package jp.jaxa.iss.kibo.rpc.defaultapk.pathing;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import android.util.Log;
 
 import jp.jaxa.iss.kibo.rpc.defaultapk.subsystem.MapPositionManager;
 
@@ -11,7 +12,7 @@ import jp.jaxa.iss.kibo.rpc.defaultapk.subsystem.MapPositionManager;
 public class Graph {
     public static ArrayList<Node> AL = new ArrayList<>();
     public static int currentIndex = 0; // for unique node in graph
-    private final static double KOZ_SCALE = 1.2;
+    private final static double KOZ_SCALE = 1.35;
 
     /**
      * Initial function add most of the necessary given coordinate.
@@ -39,9 +40,12 @@ public class Graph {
      * Add point as node to the global graph. (Intercept of a line between 2 point make the weight = 999999999)
      * @param p Point
      * */
-    public static void addNode(Point p) {
+    public static Node addNode(Point p) {
         Node node = new Node(p, currentIndex);
-        if(node.Point==null){return;}
+        if(node.Point==null){
+            Log.i("Node adding error","Attempt to add a null point node, return null");
+            return null;
+        }
         currentIndex++;
         AL.add(node);
         for (Node value : AL) {
@@ -54,14 +58,18 @@ public class Graph {
                 value.AddEdgeList(node);
             }
         }
+        return node;
     }
     public static void addNode(double[] Pos){
         addNode(new Point(Pos[0],Pos[1],Pos[2]));
     }
 
-    public static void addNode(Point point, POI_ID id){
+    public static Node addNode(Point point, POI_ID id){
         Node node = new Node(point,currentIndex,id);
-        if(node.Point==null){return;}
+        if(node.Point==null){
+            Log.i("Node adding error","Attempt to add a null point node, return null");
+            return null;
+        }
         currentIndex++;
         AL.add(node);
         for (Node value : AL) {
@@ -74,6 +82,7 @@ public class Graph {
                 value.AddEdgeList(node);
             }
         }
+        return node;
     }
 
     /**
